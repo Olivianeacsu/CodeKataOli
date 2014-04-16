@@ -10,15 +10,27 @@
 #include <string>
 using namespace std;
 
-
 string fizzBuzz(int number){
+	bool devidableBy3 = false;
+	bool devidableBy5 = false;
+
 	string retStr = to_string(number);
 
 	if (number % 3 == 0){
-		retStr = "Fizz";
-	} else if (number % 5 == 0) {
-		retStr = "Buzz";
+		devidableBy3 = true;
 	}
+
+	if (number % 5 == 0) {
+		devidableBy5 = true;
+	}
+
+	if (devidableBy5 && devidableBy3 )
+		retStr = "FizzBuzz";
+	else if(devidableBy3 && !devidableBy5)
+		retStr = "Fizz";
+	else  if(!devidableBy3 && devidableBy5)
+		retStr = "Buzz";
+
 	return retStr;
 }
 int main() {
